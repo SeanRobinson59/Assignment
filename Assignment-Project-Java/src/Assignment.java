@@ -7,6 +7,7 @@ public class Assignment {
     public static Console cnsl = System.console();
     
     private static Song AddSong() {
+        
         out.println();
         out.println("Input Artist : ");
         String artist_input = cnsl.readLine();
@@ -16,12 +17,22 @@ public class Assignment {
         String song_input = cnsl.readLine(); /* need to alter to make sure if a number is entered, it will be read as a string */
 
         out.println();
+        String played ="A";
         out.println("Input how many times the song has currently been played (whole number) : ");
-        String played = cnsl.readLine();
-        int played_input = Integer.parseInt(played);
+        played = cnsl.readLine();
 
-        return new Song(artist_input, song_input, played_input); 
+        if (!played.matches("\\d+")){
+            do {
+                    out.println("\nThat Wasnt an Integer! \n\nPlease Enter an Integer : ");
+                    played = cnsl.readLine();         
+                } while (!played.matches("\\d+"));
+            }
+
+        int played_input = Integer.parseInt(played);
+        return new Song(artist_input, song_input, played_input);
+        
     } 
+
 
     private static void Played(ArrayList<Song> songs) {
         out.println();
@@ -101,7 +112,7 @@ public class Assignment {
             choice = PrintOptions();
             switch (choice) {
                 case "A":
-                    song_list.add(AddSong()); 
+                song_list.add(AddSong());
                     break;
                 case "R":
                     Remove(song_list);
