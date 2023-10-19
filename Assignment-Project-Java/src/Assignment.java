@@ -1,4 +1,3 @@
-package Assignment;
 import java.io.Console;
 import java.util.ArrayList;
 import static java.lang.System.out;
@@ -18,7 +17,8 @@ public class Assignment {
 
         out.println();
         out.println("Input how many times the song has currently been played (whole number) : ");
-        int played_input = Integer.parseInt(cnsl.readLine());
+        String played = cnsl.readLine();
+        int played_input = Integer.parseInt(played);
 
         return new Song(artist_input, song_input, played_input); 
     } 

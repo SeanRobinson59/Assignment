@@ -1,5 +1,3 @@
-package Assignment;
-
 public class Song {
      String artist;
      String title;
