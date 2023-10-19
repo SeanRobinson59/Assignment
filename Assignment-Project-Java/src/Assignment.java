@@ -30,7 +30,6 @@ public class Assignment {
 
         int played_input = Integer.parseInt(played);
         return new Song(artist_input, song_input, played_input);
-        
     } 
 
 
