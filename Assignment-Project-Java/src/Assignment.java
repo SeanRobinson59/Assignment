@@ -68,7 +68,6 @@ public class Assignment {
     }
 
     private static ArrayList<Song> Remove(ArrayList<Song> songs){
-        out.println("Pick a Song to remove by entering the number in the square brackets : ");
             int x = 0;
             for (Song s:songs){
                 out.println();
@@ -76,6 +75,7 @@ public class Assignment {
                 out.println();
                 ++x;                
             } 
+        out.println("Pick a Song to remove by entering the number in the square brackets : \n");
         int song_remove = Integer.parseInt(cnsl.readLine());
         songs.remove(song_remove);
         return songs;
