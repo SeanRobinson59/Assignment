@@ -67,7 +67,7 @@ public class Assignment {
         return new Song(artistInput, songInput, playedInput);
     }
 
-    private static ArrayList<Song> Remove(ArrayList<Song> songs){
+    private static ArrayList<Song> songRemove(ArrayList<Song> songs){
             int x = 0;
             for (Song s:songs){
                 out.println();
