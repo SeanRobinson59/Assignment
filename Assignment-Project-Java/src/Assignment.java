@@ -76,8 +76,8 @@ public class Assignment {
                 ++x;                
             } 
         out.println("Pick a Song to remove by entering the number in the square brackets : \n");
-        int song_remove = Integer.parseInt(cnsl.readLine());
-        songs.remove(song_remove);
+        int songRemove = Integer.parseInt(cnsl.readLine());
+        songs.remove(songRemove);
         return songs;
     }
 
