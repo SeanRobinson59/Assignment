@@ -72,7 +72,7 @@ public class Assignment {
             int x = 0;
             for (Song s:songs){
                 out.println();
-                out.println(s.title + " By " + s.artist+ "[" + x + "]");
+                out.println(s.title + " By " + s.artist+ "[" + x + "]"); // Could add a try catch to catch people putting in the wrong number
                 out.println();
                 ++x;                
             } 
