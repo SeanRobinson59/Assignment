@@ -51,10 +51,10 @@ public class Assignment {
         out.println("\nInput how many times the song has currently been played (whole number) : ");
         String played = cnsl.readLine();
         if (!played.matches("\\d+")){
-            do {
+            while (!played.matches("\\d+")) {
                     out.println("\nThat Wasnt an Integer! \n\nPlease Enter an Integer : ");
                     played = cnsl.readLine();         
-            } while (!played.matches("\\d+"));
+            } 
         }
         final int PLAYED_INPUT = Integer.parseInt(played);
         return new Song(ARTIST_INPUT, SONG_INPUT, PLAYED_INPUT);
@@ -62,6 +62,7 @@ public class Assignment {
 
     private static ArrayList<Song> songRemove(ArrayList<Song> songs){
         int x = 0;
+        boolean done = false;
         gap();
         out.println("\n");
         for (Song s:songs){
@@ -69,20 +70,32 @@ public class Assignment {
             ++x;                
         }
         gap(); 
-        out.println("Pick a Song to remove by entering the number in the square brackets : \n");
-        final int SONG_REMOVE = Integer.parseInt(cnsl.readLine());
-        songs.remove(SONG_REMOVE);
+        do {
+            try {
+                out.println("Pick a Song to remove by entering the number in the square brackets : \n");
+                int songRemove = Integer.parseInt(cnsl.readLine());
+                songs.remove(songRemove);
+                done = true;
+            }catch (IndexOutOfBoundsException e){
+                out.println("\nYour song number isn't correct, please check again! \n");
+            }
+        }while(!done);
         return songs;
     }
 
     private static void printSongs(ArrayList<Song> songs, boolean version) {
-        int plays;
+        int plays =0;
+        boolean done = false;
         if (version){
-            out.println("\nMinimum Plays = \n");
-            plays = Integer.parseInt(cnsl.readLine());
-        }
-        else{
-            plays = 0;
+            while(!done) {
+                try {
+                    out.println("\nMinimum Plays = \n");
+                    plays = Integer.parseInt(cnsl.readLine());
+                    done = true;
+                }catch (NumberFormatException e){
+                    out.println("\nThat Wasnt an Integer! \n\nPlease Enter an Integer : ");
+                }
+            }
         }
         gap();
         out.println("\n");
