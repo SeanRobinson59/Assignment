@@ -6,7 +6,9 @@ import static java.lang.System.out;
 public class Assignment {
     
     public static final Console cnsl = System.console();
-    public static final String GAP = "------------------------------------------------------------------------";
+    public static void gap(){
+        out.println("------------------------------------------------------------------------");
+    }
 
     public static ArrayList<Song> initList(){
         ArrayList<Song> songList = new ArrayList<>();
@@ -29,32 +31,26 @@ public class Assignment {
         }
     
     private static String printOptions() {
-        out.println(); /* I am aware of the \n operator but prefered this method as it looked better on my console (in my opinion) */
-        out.println("What do you want to do:");
-        out.println();
-        out.println("Add an Song [A]");
+        out.println("\nWhat do you want to do:");
+        out.println("\nAdd an Song [A]");
         out.println("Remove a Song [R]");
         out.println("View all songs [S]");
         out.println("Print Songs over a Certain number of plays [P]");
-        out.println("Exit Program [X]");
-        out.println();
+        out.println("Exit Program [X]\n");
         String choice = cnsl.readLine();
         choice = choice.toUpperCase();
         return choice;
     } 
 
-    private static Song addSong() {
+    private static Song addSong() { // add qualifer that it is not empty (and possibly do that for other functions)
         
-        out.println();
-        out.println("Input Artist : ");
+        out.println("\nInput Artist : ");
         final String ARTIST_INPUT = cnsl.readLine();
 
-        out.println();
-        out.println("Input Song : ");
+        out.println("\nInput Song : ");
         final String SONG_INPUT = cnsl.readLine();
 
-        out.println();
-        out.println("Input how many times the song has currently been played (whole number) : ");
+        out.println("\nInput how many times the song has currently been played (whole number) : ");
         String played = cnsl.readLine();
 
         if (!played.matches("\\d+")){
@@ -69,13 +65,15 @@ public class Assignment {
     }
 
     private static ArrayList<Song> songRemove(ArrayList<Song> songs){
-            int x = 0;
-            for (Song s:songs){
-                out.println();
-                out.println(s.title + " By " + s.artist+ "[" + x + "]"); // Could add a try catch to catch people putting in the wrong number
-                out.println();
-                ++x;                
-            } 
+        int x = 0;
+        gap();
+        for (Song s:songs){
+            out.println("\n");
+            out.println(s.title + " By " + s.artist+ "[" + x + "]"); // Could add a try catch to catch people putting in the wrong number
+            out.println("\n");
+            ++x;                
+        }
+        gap(); 
         out.println("Pick a Song to remove by entering the number in the square brackets : \n");
         final int SONG_REMOVE = Integer.parseInt(cnsl.readLine());
         songs.remove(SONG_REMOVE);
@@ -85,23 +83,21 @@ public class Assignment {
     private static void printSongs(ArrayList<Song> songs, boolean version) {
         int plays;
         if (version){
-            out.println();
-            out.println("Minimum Plays = ");
-            out.println();
+            out.println("\nMinimum Plays = \n");
+
             plays = Integer.parseInt(cnsl.readLine());
         }
         else{
             plays = 0;
         }
-        out.println(GAP);
+        gap();
+        out.println("\n");
         for (Song s:songs){
             if(s.played > plays){
-                out.println();
-                out.println(s.title + " By " + s.artist+ " has been played " + s.played + " times.");
-                out.println();
+                out.println(s.title + " By " + s.artist+ " has been played " + s.played + " times." + "\n");
             }                
         }
-        out.println(GAP); 
+        gap(); 
     }
     public static void main(String []args) {
         ArrayList<Song> songList = initList();
