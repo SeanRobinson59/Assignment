@@ -6,6 +6,7 @@ import static java.lang.System.out;
 public class Assignment {
     
     public static final Console cnsl = System.console();
+    
     public static void gap(){
         out.println("------------------------------------------------------------------------");
     }
@@ -43,23 +44,18 @@ public class Assignment {
     } 
 
     private static Song addSong() { // add qualifer that it is not empty (and possibly do that for other functions)
-        
         out.println("\nInput Artist : ");
         final String ARTIST_INPUT = cnsl.readLine();
-
         out.println("\nInput Song : ");
         final String SONG_INPUT = cnsl.readLine();
-
         out.println("\nInput how many times the song has currently been played (whole number) : ");
         String played = cnsl.readLine();
-
         if (!played.matches("\\d+")){
             do {
                     out.println("\nThat Wasnt an Integer! \n\nPlease Enter an Integer : ");
                     played = cnsl.readLine();         
             } while (!played.matches("\\d+"));
         }
-
         final int PLAYED_INPUT = Integer.parseInt(played);
         return new Song(ARTIST_INPUT, SONG_INPUT, PLAYED_INPUT);
     }
@@ -83,7 +79,6 @@ public class Assignment {
         int plays;
         if (version){
             out.println("\nMinimum Plays = \n");
-
             plays = Integer.parseInt(cnsl.readLine());
         }
         else{
@@ -104,7 +99,6 @@ public class Assignment {
         do{
             choice = printOptions();
             switch (choice) {
-
                 case "A":
                     songList.add(addSong());
                     break;
@@ -123,7 +117,6 @@ public class Assignment {
                 
                 default:
                     break;
-                
             }                    
         } while (!choice.equals("X"));
     }
