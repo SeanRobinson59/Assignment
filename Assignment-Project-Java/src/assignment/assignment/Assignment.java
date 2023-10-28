@@ -1,3 +1,4 @@
+package assignment;
 import java.io.Console;
 import java.util.ArrayList;
 import static java.lang.System.out;
@@ -5,7 +6,8 @@ import static java.lang.System.out;
 public class Assignment {
     
     public static final Console cnsl = System.console();
-    
+    public static final String GAP = "------------------------------------------------------------------------";
+
     public static ArrayList<Song> initList(){
         ArrayList<Song> songList = new ArrayList<>();
         songList.add( new Song("Fred Again", "ten", 4335459));
@@ -45,16 +47,15 @@ public class Assignment {
         
         out.println();
         out.println("Input Artist : ");
-        String artistInput = cnsl.readLine();
+        final String ARTIST_INPUT = cnsl.readLine();
 
         out.println();
         out.println("Input Song : ");
-        String songInput = cnsl.readLine(); /* need to alter to make sure if a number is entered, it will be read as a string */
+        final String SONG_INPUT = cnsl.readLine();
 
         out.println();
-        String played;
         out.println("Input how many times the song has currently been played (whole number) : ");
-        played = cnsl.readLine();
+        String played = cnsl.readLine();
 
         if (!played.matches("\\d+")){
             do {
@@ -63,21 +64,21 @@ public class Assignment {
             } while (!played.matches("\\d+"));
         }
 
-        int playedInput = Integer.parseInt(played);
-        return new Song(artistInput, songInput, playedInput);
+        final int PLAYED_INPUT = Integer.parseInt(played);
+        return new Song(ARTIST_INPUT, SONG_INPUT, PLAYED_INPUT);
     }
 
     private static ArrayList<Song> songRemove(ArrayList<Song> songs){
             int x = 0;
             for (Song s:songs){
                 out.println();
-                out.println(s.title + " By " + s.artist + "[" + x + "]");
+                out.println(s.title + " By " + s.artist+ "[" + x + "]");
                 out.println();
                 ++x;                
             } 
         out.println("Pick a Song to remove by entering the number in the square brackets : \n");
-        int songRemove = Integer.parseInt(cnsl.readLine());
-        songs.remove(songRemove);
+        final int SONG_REMOVE = Integer.parseInt(cnsl.readLine());
+        songs.remove(SONG_REMOVE);
         return songs;
     }
 
@@ -85,22 +86,26 @@ public class Assignment {
         out.println();
         out.println("Minimum Plays = ");
         out.println();
-        int plays = Integer.parseInt(cnsl.readLine());
+        final int PLAYS = Integer.parseInt(cnsl.readLine());
+        out.println(GAP);
         for (Song s:songs){
-            if(s.played > plays){
+            if(s.played > PLAYS){
                 out.println();
-                out.println(s.title + " By " + s.artist + " has been played " + s.played + " times.");
+                out.println(s.title + " By " + s.artist+ " has been played " + s.played + " times.");
                 out.println();
             }                
-        } 
+        }
+        out.println(GAP); 
     }
 
     private static void allSongs(ArrayList<Song> songs) {
+        out.println(GAP);
         for (Song s:songs){
             out.println();
-            out.println(s.title + " By " + s.artist + " has been played " + s.played + " times.");
+            out.println(s.title + " By " + s.artist+ " has been played " + s.played + " times.");
             out.println();                
-        } 
+        }
+        out.println(GAP); 
     }
 
     public static void main(String []args) {
