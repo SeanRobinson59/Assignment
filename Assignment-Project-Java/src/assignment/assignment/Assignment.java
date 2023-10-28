@@ -67,10 +67,9 @@ public class Assignment {
     private static ArrayList<Song> songRemove(ArrayList<Song> songs){
         int x = 0;
         gap();
+        out.println("\n");
         for (Song s:songs){
-            out.println("\n");
-            out.println(s.title + " By " + s.artist+ "[" + x + "]"); // Could add a try catch to catch people putting in the wrong number
-            out.println("\n");
+            out.println(s.title + " By " + s.artist+ "[" + x + "]\n"); // Could add a try catch to catch people putting in the wrong number
             ++x;                
         }
         gap(); 
