@@ -4,7 +4,6 @@ public class Song {
      String title;
      int played;
      
-
     public Song(String artist, String title, int played) {
         this.artist = artist;
         this.title = title;
