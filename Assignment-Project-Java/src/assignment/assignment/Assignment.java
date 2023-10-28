@@ -82,14 +82,20 @@ public class Assignment {
         return songs;
     }
 
-    private static void playedSongs(ArrayList<Song> songs) {
-        out.println();
-        out.println("Minimum Plays = ");
-        out.println();
-        final int PLAYS = Integer.parseInt(cnsl.readLine());
+    private static void printSongs(ArrayList<Song> songs, boolean version) {
+        int plays;
+        if (version){
+            out.println();
+            out.println("Minimum Plays = ");
+            out.println();
+            plays = Integer.parseInt(cnsl.readLine());
+        }
+        else{
+            plays = 0;
+        }
         out.println(GAP);
         for (Song s:songs){
-            if(s.played > PLAYS){
+            if(s.played > plays){
                 out.println();
                 out.println(s.title + " By " + s.artist+ " has been played " + s.played + " times.");
                 out.println();
@@ -97,17 +103,6 @@ public class Assignment {
         }
         out.println(GAP); 
     }
-
-    private static void allSongs(ArrayList<Song> songs) {
-        out.println(GAP);
-        for (Song s:songs){
-            out.println();
-            out.println(s.title + " By " + s.artist+ " has been played " + s.played + " times.");
-            out.println();                
-        }
-        out.println(GAP); 
-    }
-
     public static void main(String []args) {
         ArrayList<Song> songList = initList();
         String choice;
@@ -124,11 +119,11 @@ public class Assignment {
                     break;                
             
                 case "P":
-                    playedSongs(songList);
+                    printSongs(songList, true);
                     break;
 
                 case "S":
-                    allSongs(songList);
+                    printSongs(songList, false);
                     break;
                 
                 default:
