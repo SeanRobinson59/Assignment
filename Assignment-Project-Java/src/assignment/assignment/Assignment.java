@@ -51,9 +51,8 @@ public class Assignment {
         return choice;
     } 
 
-    private static Song addSong() { // add qualifer that it is not empty (and possibly do that for other functions)
+    private static Song addSong() { // maybe change parts to try and catch
         out.println("\nInput Artist : ");
-        //String artist_Input = cnsl.readLine();
         final String ARTIST_INPUT = emptyCheck(cnsl.readLine());
         out.println("\nInput Song : ");
         final String SONG_INPUT = emptyCheck(cnsl.readLine());
