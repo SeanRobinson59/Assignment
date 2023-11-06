@@ -5,13 +5,21 @@ import static java.lang.System.out;
 
 public class Assignment {
     
-    public static final Console cnsl = System.console();
+    public static final Console cnsl = System.console(); //Makes console comands easier
     
-    public static void gap(){
+    public static void gap(){ // Makes a gap/page break kind of thing, just made it a function as was used a few times
         out.println("------------------------------------------------------------------------");
     }
 
-    public static ArrayList<Song> initList(){
+    public static String emptyCheck(String input){ // Makes a gap/page break kind of thing, just made it a function as was used a few times
+        while (input.matches("")){
+            out.println("Please enter a value!\n");
+            input = cnsl.readLine();
+            }
+            return input;
+    }
+
+    public static ArrayList<Song> initList(){ //Initialises the ArrayList of Songs and adds the songs
         ArrayList<Song> songList = new ArrayList<>();
         songList.add( new Song("Fred Again", "ten", 4335459));
         songList.add( new Song("Flowdan", "Pepper", 7651));
@@ -31,7 +39,7 @@ public class Assignment {
         return songList;              
         }
     
-    private static String printOptions() {
+    private static String printOptions() { //Prints all the menu Options
         out.println("\nWhat do you want to do:");
         out.println("\nAdd an Song [A]");
         out.println("Remove a Song [R]");
@@ -45,9 +53,10 @@ public class Assignment {
 
     private static Song addSong() { // add qualifer that it is not empty (and possibly do that for other functions)
         out.println("\nInput Artist : ");
-        final String ARTIST_INPUT = cnsl.readLine();
+        //String artist_Input = cnsl.readLine();
+        final String ARTIST_INPUT = emptyCheck(cnsl.readLine());
         out.println("\nInput Song : ");
-        final String SONG_INPUT = cnsl.readLine();
+        final String SONG_INPUT = emptyCheck(cnsl.readLine());
         out.println("\nInput how many times the song has currently been played (whole number) : ");
         String played = cnsl.readLine();
         if (!played.matches("\\d+")){
@@ -70,22 +79,26 @@ public class Assignment {
             ++x;                
         }
         gap(); 
-        do {
+        while(!done){
             try {
                 out.println("Pick a Song to remove by entering the number in the square brackets : \n");
                 int songRemove = Integer.parseInt(cnsl.readLine());
                 songs.remove(songRemove);
                 done = true;
+
             }catch (IndexOutOfBoundsException e){
                 out.println("\nYour song number isn't correct, please check again! \n");
+            }catch (NumberFormatException e){
+                out.println("\nThat Wasnt an Integer! \n");
             }
-        }while(!done);
+        }
         return songs;
     }
 
     private static void printSongs(ArrayList<Song> songs, boolean version) {
         int plays =0;
         boolean done = false;
+        boolean no_Songs = true;
         if (version){
             while(!done) {
                 try {
@@ -101,9 +114,13 @@ public class Assignment {
         out.println("\n");
         for (Song s:songs){
             if(s.played > plays){
+                no_Songs = false;
                 out.println(s.title + " By " + s.artist+ " has been played " + s.played + " times." + "\n");
-            }                
+            }
         }
+        if(no_Songs){
+                out.println("There are no songs that have more than " + plays + " plays!\n");
+            }                
         gap(); 
     }
     public static void main(String []args) {
