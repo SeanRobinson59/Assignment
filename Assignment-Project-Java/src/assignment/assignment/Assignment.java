@@ -4,6 +4,21 @@ import java.util.ArrayList;
 import static java.lang.System.out;
 
 public class Assignment {
+
+    //Make this into a function for catching strings in int fields in the other methods : 
+
+    /* while(!done){
+            try {
+                out.println("Pick a Song to remove by entering the number in the square brackets : \n");
+                int songRemove = Integer.parseInt(cnsl.readLine());
+                songs.remove(songRemove);
+                done = true;
+
+            }catch (IndexOutOfBoundsException e){
+                out.println("\nYour song number isn't correct, please check again! \n");
+            }catch (NumberFormatException e){
+                out.println("\nThat Wasnt an Integer! \n");
+            } */
     
     public static final Console cnsl = System.console(); //Makes console comands easier
     
@@ -51,20 +66,23 @@ public class Assignment {
         return choice;
     } 
 
-    private static Song addSong() { // maybe change parts to try and catch
+    private static Song addSong() { //Adds the song to the Array List
+        boolean done = false;
+        int played = 0;
         out.println("\nInput Artist : ");
         final String ARTIST_INPUT = emptyCheck(cnsl.readLine());
         out.println("\nInput Song : ");
         final String SONG_INPUT = emptyCheck(cnsl.readLine());
         out.println("\nInput how many times the song has currently been played (whole number) : ");
-        String played = cnsl.readLine();
-        if (!played.matches("\\d+")){
-            while (!played.matches("\\d+")) {
-                    out.println("\nThat Wasnt an Integer! \n\nPlease Enter an Integer : ");
-                    played = cnsl.readLine();         
-            } 
+        while(!done){
+            try{
+                played = Integer.parseInt(cnsl.readLine());
+                done = true;
+            }catch(NumberFormatException e){
+                out.println("\nThat Wasnt an Integer! \n\nPlease Enter an Integer : ");
+            }
         }
-        final int PLAYED_INPUT = Integer.parseInt(played);
+        final int PLAYED_INPUT = played;
         return new Song(ARTIST_INPUT, SONG_INPUT, PLAYED_INPUT);
     }
 
