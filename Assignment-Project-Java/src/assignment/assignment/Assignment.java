@@ -26,6 +26,22 @@ public class Assignment {
         out.println("------------------------------------------------------------------------");
     }
 
+    public static int intCheck(){ //doesnt work for songRemove because it wont pick up IOOBE if not given array
+        boolean done = false;
+        int output = 0;
+        while(!done){
+            try {
+                output = Integer.parseInt(cnsl.readLine());
+                done = true;
+            }catch (IndexOutOfBoundsException e){
+                out.println("\nYour song number isn't correct, please check again! \nPlease Enter an Integer : ");
+            }catch (NumberFormatException e){
+                out.println("\nThat Wasnt an Integer! \n\nPlease Enter an Integer : ");
+            }  
+        }
+        return output;
+    }
+
     public static String emptyCheck(String input){ // Makes a gap/page break kind of thing, just made it a function as was used a few times
         while (input.matches("")){
             out.println("Please enter a value!\n");
@@ -67,22 +83,12 @@ public class Assignment {
     } 
 
     private static Song addSong() { //Adds the song to the Array List
-        boolean done = false;
-        int played = 0;
         out.println("\nInput Artist : ");
         final String ARTIST_INPUT = emptyCheck(cnsl.readLine());
         out.println("\nInput Song : ");
         final String SONG_INPUT = emptyCheck(cnsl.readLine());
         out.println("\nInput how many times the song has currently been played (whole number) : ");
-        while(!done){
-            try{
-                played = Integer.parseInt(cnsl.readLine());
-                done = true;
-            }catch(NumberFormatException e){
-                out.println("\nThat Wasnt an Integer! \n\nPlease Enter an Integer : ");
-            }
-        }
-        final int PLAYED_INPUT = played;
+        final int PLAYED_INPUT = intCheck();
         return new Song(ARTIST_INPUT, SONG_INPUT, PLAYED_INPUT);
     }
 
@@ -92,23 +98,13 @@ public class Assignment {
         gap();
         out.println("\n");
         for (Song s:songs){
-            out.println(s.title + " By " + s.artist+ "[" + x + "]\n"); // Could add a try catch to catch people putting in the wrong number
+            out.println(s.title + " By " + s.artist+ "[" + x + "]\n"); 
             ++x;                
         }
         gap(); 
-        while(!done){
-            try {
-                out.println("Pick a Song to remove by entering the number in the square brackets : \n");
-                int songRemove = Integer.parseInt(cnsl.readLine());
-                songs.remove(songRemove);
-                done = true;
-
-            }catch (IndexOutOfBoundsException e){
-                out.println("\nYour song number isn't correct, please check again! \n");
-            }catch (NumberFormatException e){
-                out.println("\nThat Wasnt an Integer! \n");
-            }
-        }
+        out.println("Pick a Song to remove by entering the number in the square brackets : \n");
+        int songRemove = intCheck();
+        songs.remove(songRemove);
         return songs;
     }
 
