@@ -103,8 +103,14 @@ public class Assignment {
         }
         gap(); 
         out.println("Pick a Song to remove by entering the number in the square brackets : \n");
-        int songRemove = intCheck();
-        songs.remove(songRemove);
+        while(!done){
+            try {
+                songs.remove(intCheck());
+                done = true;
+            }catch (IndexOutOfBoundsException e){
+                    out.println("\nYour song number isn't correct, please check again! \nPlease Enter an Integer : ");
+            }
+        }
         return songs;
     }
 
