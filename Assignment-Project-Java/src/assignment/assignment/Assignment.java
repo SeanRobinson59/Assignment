@@ -20,13 +20,13 @@ public class Assignment {
                 out.println("\nThat Wasnt an Integer! \n");
             } */
     
-    public static final Console cnsl = System.console(); //Makes console comands easier
+    private static final Console cnsl = System.console(); //Makes console comands easier
     
-    public static void gap(){ // Makes a gap/page break kind of thing, just made it a function as was used a few times
+    private static void gap(){ // Makes a gap/page break kind of thing, just made it a function as was used a few times
         out.println("------------------------------------------------------------------------");
     }
 
-    public static int intCheck(){ //doesnt work for songRemove because it wont pick up IOOBE if not given array
+    private static int intCheck(){ //doesnt work for songRemove because it wont pick up IOOBE if not given array
         boolean done = false;
         int output = 0;
         while(!done){
@@ -42,7 +42,7 @@ public class Assignment {
         return output;
     }
 
-    public static String emptyCheck(String input){ // Makes a gap/page break kind of thing, just made it a function as was used a few times
+    private static String emptyCheck(String input){ // Makes a gap/page break kind of thing, just made it a function as was used a few times
         while (input.matches("")){
             out.println("Please enter a value!\n");
             input = cnsl.readLine();
@@ -50,7 +50,7 @@ public class Assignment {
             return input;
     }
 
-    public static ArrayList<Song> initList(){ //Initialises the ArrayList of Songs and adds the songs
+    private static ArrayList<Song> initList(){ //Initialises the ArrayList of Songs and adds the songs
         ArrayList<Song> songList = new ArrayList<>();
         songList.add( new Song("Fred Again", "ten", 4335459));
         songList.add( new Song("Flowdan", "Pepper", 7651));
