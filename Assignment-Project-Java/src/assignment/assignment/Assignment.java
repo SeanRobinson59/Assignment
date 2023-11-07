@@ -51,7 +51,7 @@ public class Assignment {
         songList.add( new Song("Bruises", "Fox Stevenson", 32785612));
         songList.add( new Song("Standstill", "Slippy", 5390));
         return songList;              
-        }
+    }
     
     private static String printOptions() { //Prints all the menu Options
         out.println("\nWhat do you want to do:");
@@ -75,7 +75,7 @@ public class Assignment {
         return new Song(ARTIST_INPUT, SONG_INPUT, PLAYED_INPUT);
     }
 
-    private static ArrayList<Song> songRemove(ArrayList<Song> songs){
+    private static ArrayList<Song> songRemove(ArrayList<Song> songs){ //Removes a song from array by using indexing
         int x = 0;
         boolean done = false;
         gap();
@@ -91,13 +91,13 @@ public class Assignment {
                 songs.remove(intCheck());
                 done = true;
             }catch (IndexOutOfBoundsException e){
-                    out.println("\nYour song number isn't correct, please check again! \nPlease Enter an Integer : ");
+                out.println("\nYour song number isn't correct, please check again! \nPlease Enter an Integer : ");
             }
         }
         return songs;
     }
 
-    private static void printSongs(ArrayList<Song> songs, boolean version) {
+    private static void printSongs(ArrayList<Song> songs, boolean version) { //Prints the songs, either all of them or songs over a certain play count, using the arg 'version' to decide. Prints text if no song has enough plays 
         int plays = 0;
         boolean no_Songs = true;
         if (version){
@@ -113,11 +113,11 @@ public class Assignment {
             }
         }
         if(no_Songs){
-                out.println("There are no songs that have more than " + plays + " plays!\n");
+            out.println("There are no songs that have more than " + plays + " plays!\n");
             }                
         gap(); 
     }
-    public static void main(String []args) {
+    public static void main(String []args) { //The Main Method
         ArrayList<Song> songList = initList();
         String choice;
         do{
