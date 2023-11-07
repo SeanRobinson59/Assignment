@@ -98,19 +98,11 @@ public class Assignment {
     }
 
     private static void printSongs(ArrayList<Song> songs, boolean version) {
-        int plays =0;
-        boolean done = false;
+        int plays = 0;
         boolean no_Songs = true;
         if (version){
-            while(!done) {
-                try {
-                    out.println("\nMinimum Plays = \n");
-                    plays = Integer.parseInt(cnsl.readLine());
-                    done = true;
-                }catch (NumberFormatException e){
-                    out.println("\nThat Wasnt an Integer! \n\nPlease Enter an Integer : ");
-                }
-            }
+            out.println("\nMinimum Plays = \n");
+            plays = intCheck();
         }
         gap();
         out.println("\n");
