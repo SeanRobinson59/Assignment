@@ -4,22 +4,7 @@ import java.util.ArrayList;
 import static java.lang.System.out;
 
 public class Assignment {
-
-    //Make this into a function for catching strings in int fields in the other methods : 
-
-    /* while(!done){
-            try {
-                out.println("Pick a Song to remove by entering the number in the square brackets : \n");
-                int songRemove = Integer.parseInt(cnsl.readLine());
-                songs.remove(songRemove);
-                done = true;
-
-            }catch (IndexOutOfBoundsException e){
-                out.println("\nYour song number isn't correct, please check again! \n");
-            }catch (NumberFormatException e){
-                out.println("\nThat Wasnt an Integer! \n");
-            } */
-    
+  
     private static final Console cnsl = System.console(); //Makes console comands easier
     
     private static void gap(){ // Makes a gap/page break kind of thing, just made it a function as was used a few times
