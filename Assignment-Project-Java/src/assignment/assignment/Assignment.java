@@ -18,8 +18,6 @@ public class Assignment {
             try {
                 output = Integer.parseInt(cnsl.readLine());
                 done = true;
-            }catch (IndexOutOfBoundsException e){
-                out.println("\nYour song number isn't correct, please check again! \nPlease Enter an Integer : ");
             }catch (NumberFormatException e){
                 out.println("\nThat Wasnt an Integer! \n\nPlease Enter an Integer : ");
             }  
