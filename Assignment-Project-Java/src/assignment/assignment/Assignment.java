@@ -100,7 +100,7 @@ public class Assignment {
 
     private static void printSongs(ArrayList<Song> songs, boolean version) { //Prints the songs, either all of them or songs over a certain play count, using the arg 'version' to decide. Prints text if no song has enough plays 
         int plays = 0;
-        boolean no_Songs = true;
+        boolean noSongs = true;
         if (version){
             out.println("\nMinimum Plays = \n");
             plays = intCheck();
@@ -109,11 +109,11 @@ public class Assignment {
         out.println("\n");
         for (Song s:songs){
             if(s.played > plays){
-                no_Songs = false;
+                noSongs = false;
                 out.println(s.title + " By " + s.artist+ " has been played " + s.played + " times." + "\n");
             }
         }
-        if(no_Songs){
+        if(noSongs){
             out.println("There are no songs that have more than " + plays + " plays!\n");
             }                
         gap(); 
