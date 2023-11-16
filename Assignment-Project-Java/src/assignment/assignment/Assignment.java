@@ -1,4 +1,5 @@
 package assignment;
+import Song;
 import java.io.Console;
 import java.util.ArrayList;
 import static java.lang.System.out;
@@ -47,9 +48,9 @@ public class Assignment {
         songList.add( new Song("Ren", "Uninvited", 2784167));
         songList.add( new Song("Reaper", "IMY", 6973053));
         songList.add( new Song("LAXX", "Math", 125463));
-        songList.add( new Song("The Outlines", "Koven", 810334));
-        songList.add( new Song("Bruises", "Fox Stevenson", 32785612));
-        songList.add( new Song("Standstill", "Slippy", 5390));
+        songList.add( new Song("Koven", "The Outlines", 810334));
+        songList.add( new Song("Fox Stevenson", "Bruises", 32785612));
+        songList.add( new Song("Slippy", "Standstill", 5390));
         return songList;              
     }
     
