@@ -12,7 +12,7 @@ public class Assignment {
         out.println("------------------------------------------------------------------------");
     }
 
-    private static int intCheck(){ //doesnt work for songRemove because it wont pick up IOOBE if not given array
+    private static int intCheck(){ //checks that the value is an Integer
         boolean done = false;
         int output = 0;
         while(!done){
@@ -118,7 +118,7 @@ public class Assignment {
             }                
         gap(); 
     }
-    public static void main(String []args) { //The Main Method
+    public static void main(String []args) { //The Main Menu
         ArrayList<Song> songList = initList();
         String choice;
         do{
